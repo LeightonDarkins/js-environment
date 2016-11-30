@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "ava --verbose",
+    "test": "ava",
     "lint": "standard",
-    "dev": "chokidar '**/*.js' -c 'standard && ava --verbose'"
+    "dev": "chokidar '**/*.js' -c 'standard && ava'"
   },
   "keywords": [],
   "author": "",
