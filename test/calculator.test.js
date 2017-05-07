@@ -1,43 +1,54 @@
-const test = require('ava')
-
 const subject = require('../lib/calculator')
 
-test('is an object and has the correct methods', (t) => {
-  t.is(typeof subject, 'object')
-  t.is(typeof subject.add, 'function')
-  t.is(typeof subject.subtract, 'function')
-  t.is(typeof subject.multiply, 'function')
-  t.is(typeof subject.divide, 'function')
-})
+describe('calculator', () => {
+  it('is an object', () => {
+    expect(typeof subject).toBe('object')
+  })
 
-test('adds 3 and 2 and returns 5', (t) => {
-  t.is(subject.add(3, 2), 5)
-})
+  it('has the correct methods', () => {
+    expect(typeof subject.add).toBe('function')
+    expect(typeof subject.subtract).toBe('function')
+    expect(typeof subject.multiply).toBe('function')
+    expect(typeof subject.divide).toBe('function')
+  })
 
-test('adds 5 and 5 and returns 10', (t) => {
-  t.is(subject.add(5, 5), 10)
-})
+  describe('.add()', () => {
+    it('adds 3 and 2 and returns 5', () => {
+      expect(subject.add(3, 2)).toBe(5)
+    })
 
-test('subtracts 5 from 10 and returns 5', (t) => {
-  t.is(subject.subtract(5, 10), 5)
-})
+    it('adds 5 and 5 and returns 10', () => {
+      expect(subject.add(5, 5)).toBe(10)
+    })
+  })
 
-test('subtracts 2 from 10 and returns 8', (t) => {
-  t.is(subject.subtract(2, 10), 8)
-})
+  describe('.subtract()', () => {
+    it('subtracts 5 from 10 and returns 5', () => {
+      expect(subject.subtract(5, 10)).toBe(5)
+    })
 
-test('multiplys 5 by 10 and returns 50', (t) => {
-  t.is(subject.multiply(5, 10), 50)
-})
+    it('subtracts 2 from 10 and returns 8', () => {
+      expect(subject.subtract(2, 10)).toBe(8)
+    })
+  })
 
-test('multiplys 3 by 7 and returns 21', (t) => {
-  t.is(subject.multiply(3, 7), 21)
-})
+  describe('.multiply()', () => {
+    it('multiplys 5 by 10 and returns 50', () => {
+      expect(subject.multiply(5, 10)).toBe(50)
+    })
 
-test('divides 3 by 0 and returns 0', (t) => {
-  t.is(subject.divide(3, 0), Infinity)
-})
+    it('multiplys 3 by 7 and returns 21', () => {
+      expect(subject.multiply(3, 7)).toBe(21)
+    })
+  })
 
-test('divides 4 by 2 and returns 2', (t) => {
-  t.is(subject.divide(4, 2), 2)
+  describe('.divide()', () => {
+    it('divides 3 by 0 and returns 0', () => {
+      expect(subject.divide(3, 0)).toBe(Infinity)
+    })
+
+    it('divides 4 by 2 and returns 2', () => {
+      expect(subject.divide(4, 2)).toBe(2)
+    })
+  })
 })

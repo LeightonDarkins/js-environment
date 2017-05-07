@@ -1,34 +1,43 @@
-const test = require('ava')
-
 const subject = require('../index')
 
-test('Is an object and has the correct methods', (t) => {
-  t.is(typeof subject, 'object')
-  t.is(typeof subject.calculateGST, 'function')
-  t.is(typeof subject.addServiceFeeToPrice, 'function')
-  t.is(typeof subject.calculateSalesTax, 'function')
-})
+describe('index', () => {
+  it('is an object', () => {
+    expect(typeof subject).toBe('object')
+  })
 
-test('calculateGST() returns 7.7 for 77', (t) => {
-  t.is(subject.calculateGST(77), 7.7)
-})
+  it('has the correct methods', () => {
+    expect(typeof subject.calculateGST).toBe('function')
+    expect(typeof subject.addServiceFeeToPrice).toBe('function')
+    expect(typeof subject.calculateSalesTax).toBe('function')
+  })
 
-test('calculateGST() returns 6.32 for 63.2', (t) => {
-  t.is(subject.calculateGST(63.2), 6.32)
-})
+  describe('.calculateGST()', () => {
+    it('returns 7.7 for 77', () => {
+      expect(subject.calculateGST(77)).toBe(7.7)
+    })
 
-test('addServiceFeeToPrice() returns 50 for 30', (t) => {
-  t.is(subject.addServiceFeeToPrice(30), 50)
-})
+    it('returns 6.32 for 63.2', () => {
+      expect(subject.calculateGST(63.2)).toBe(6.32)
+    })
+  })
 
-test('addServiceFeeToPrice() returns 65 for 45', (t) => {
-  t.is(subject.addServiceFeeToPrice(45), 65)
-})
+  describe('.addServiceFeeToPrice()', () => {
+    it('returns 50 for 30', () => {
+      expect(subject.addServiceFeeToPrice(30)).toBe(50)
+    })
 
-test('calculateSalesTax() returns 9 for 100', (t) => {
-  t.is(subject.calculateSalesTax(100), 9)
-})
+    it('returns 65 for 45', () => {
+      expect(subject.addServiceFeeToPrice(45)).toBe(65)
+    })
+  })
 
-test('calculateSalesTax() returns 18 for 200', (t) => {
-  t.is(subject.calculateSalesTax(200), 18)
+  describe('.calculateSalesTax()', () => {
+    it('returns 9 for 100', () => {
+      expect(subject.calculateSalesTax(100)).toBe(9)
+    })
+
+    it('returns 18 for 200', () => {
+      expect(subject.calculateSalesTax(200)).toBe(18)
+    })
+  })
 })
